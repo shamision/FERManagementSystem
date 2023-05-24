@@ -18,7 +18,8 @@ public class Customer {
     private String name;
     private String email;
     private String phone;
-    @OneToMany(targetEntity = ProductData.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "cust_fk", referencedColumnName = "id")
-    private List<ProductData> mtnData;
+//    @OneToMany(targetEntity = ProductData.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    @OneToMany(mappedBy = "customer")
+//    private List<ProductData> productData;
 }

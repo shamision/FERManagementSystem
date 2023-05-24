@@ -19,6 +19,7 @@ public class CustomerController {
 
     @PostMapping(path = "/register")
     public void registerNewCustomer (@RequestBody Customer customer) {
+
         customerService.addNewCustomer(customer);
     }
 

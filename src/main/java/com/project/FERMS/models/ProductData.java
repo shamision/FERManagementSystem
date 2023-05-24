@@ -22,4 +22,7 @@ public class ProductData {
     private int price;
     @CreationTimestamp
     private LocalDate dateCreated;
+    @ManyToOne
+    @JoinColumn(name = "customer_id",nullable = false)
+    private Customer customer;
 }
