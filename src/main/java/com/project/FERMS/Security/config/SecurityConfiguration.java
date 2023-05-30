@@ -19,14 +19,21 @@ public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
+    private static final String[] AUTH_WHITELIST = {
+            "/api/v1/auth/**",
+            "/v3/api-docs/**",
+            "/v3/api-docs.yaml",
+            "/swagger-ui/**",
+            "/swagger-ui.html"
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("api/v1/auth/**")
-                .permitAll()
+                .requestMatchers("api/v1/auth/**").permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("api/customer/**").hasAuthority("MarketingManager")
                 .requestMatchers("api/product/**", "api/maintenance/**").hasAuthority("Technician")
                 .anyRequest()
