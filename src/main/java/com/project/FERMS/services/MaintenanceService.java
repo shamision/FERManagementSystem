@@ -30,7 +30,7 @@ public class MaintenanceService {
         maintenanceRepository.deleteById(id);
     }
 
-    public List<Maintenance> listMaintenanceByProduct(int prodId) {
+    public List<Maintenance> listMaintenanceByEquipment(int prodId) {
         List<Maintenance> maintenances = maintenanceRepository.findAll();
         List<Maintenance> productMaintenance = new ArrayList<>();
 

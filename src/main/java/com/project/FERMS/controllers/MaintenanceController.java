@@ -44,9 +44,9 @@ public class MaintenanceController {
         maintenanceService.deleteMaintenance(id);
     }
 
-    @GetMapping(path = "/productMaintenance/{id}")
+    @GetMapping(path = "/EquipmentMaintenance/{id}")
     public List<Maintenance> ListMaintenanceByProduct(@PathVariable Integer id) {
-        return maintenanceService.listMaintenanceByProduct(id);
+        return maintenanceService.listMaintenanceByEquipment(id);
     }
 
     @GetMapping(path = "/technicianMaintenance/{id}")

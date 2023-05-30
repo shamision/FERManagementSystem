@@ -1,6 +1,6 @@
 package com.project.FERMS.models;
 
-import com.project.FERMS.Security.user.User;
+import com.project.FERMS.Security.user.Employee;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,10 +19,10 @@ public class Maintenance {
     private int id;
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
-    private ProductData product;
+    private Equipment product;
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User technician;
+    private Employee technician;
     @CreationTimestamp
     private LocalDate dateCreated;
     private int cost;

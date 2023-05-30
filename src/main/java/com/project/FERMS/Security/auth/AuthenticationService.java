@@ -2,7 +2,7 @@ package com.project.FERMS.Security.auth;
 
 import com.project.FERMS.Security.config.JwtService;
 import com.project.FERMS.Security.user.Role;
-import com.project.FERMS.Security.user.User;
+import com.project.FERMS.Security.user.Employee;
 import com.project.FERMS.Security.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,7 +21,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         Role role = Role.valueOf(request.getRole());
-        var user = User.builder()
+        var user = Employee.builder()
                 .name(request.getName())
                 .phone(request.getPhone())
                 .email(request.getEmail())

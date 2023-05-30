@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                 .requestMatchers("api/v1/auth/**").permitAll()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
                 .requestMatchers("api/customer/**").hasAuthority("MarketingManager")
-                .requestMatchers("api/product/**", "api/maintenance/**").hasAuthority("Technician")
+                .requestMatchers("api/equipment/**", "api/maintenance/**").hasAuthority("Technician")
                 .anyRequest()
                 .authenticated()
                 .and()

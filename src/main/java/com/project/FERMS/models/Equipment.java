@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ProductData {
+public class Equipment {
 
     @Id
     @GeneratedValue
