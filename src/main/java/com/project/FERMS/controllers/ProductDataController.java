@@ -21,20 +21,19 @@ public class ProductDataController {
         return productDataService.addProductData(productData);
     }
 
-    @GetMapping(path = "/display")
+    @GetMapping
     public List<ProductData> displayProductData() {
-
         return productDataService.displayProductData();
     }
 
-    @GetMapping(path = "/{id}")
-    public ProductData displayProductById(int id) {
+    @GetMapping(path = "/display/{id}")
+    public ProductData displayProductById(@PathVariable Integer id) {
         return productDataService.displayProductById(id);
     }
 
     @PutMapping(path = "/update/{id}")
-    public ProductData updateProduct(@PathVariable int id,@RequestBody ProductData productData) {
-        productData.setId(id);
+    public ProductData updateProduct(@PathVariable Integer id,@RequestBody ProductData productData) {
+//        productData.setId(id);
         return productDataService.addProductData(productData);
     }
 
@@ -45,11 +44,12 @@ public class ProductDataController {
 
     @GetMapping(path = "/customerProducts/{id}")
     public List<ProductData> displayProductByCustomer(@PathVariable int id) {
-        return productDataService.getProductByCusotmer(id);
+        return productDataService.getProductByCustomer(id);
     }
 
     @GetMapping(path = "/expired")
     public List<ProductData> getExpiredProducts() {
+
         return productDataService.getProductAboutToExpire();
     }
 }

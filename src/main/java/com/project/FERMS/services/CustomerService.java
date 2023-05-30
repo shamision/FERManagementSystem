@@ -18,6 +18,7 @@ public class CustomerService {
     @Autowired
     private final CustomerRepository customerRepository;
 
+
     public void addNewCustomer(Customer customer) {
         Optional<Customer> customerOptional = customerRepository.findCustomerByEmail(customer.getEmail());
         if (customerOptional.isPresent()) {

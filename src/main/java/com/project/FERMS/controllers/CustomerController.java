@@ -5,6 +5,7 @@ import com.project.FERMS.services.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping(path = "/register")
+//    @PreAuthorize("hasRole(T(com.project.FERMS.Security.user.Role).MarketingManager.name())")
+//    @PreAuthorize(("hasRole('Technician')"))
     public void registerNewCustomer (@RequestBody Customer customer) {
 
         customerService.addNewCustomer(customer);

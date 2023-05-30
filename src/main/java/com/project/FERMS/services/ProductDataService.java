@@ -32,16 +32,16 @@ public class ProductDataService {
         return productDataRepository.findAll();
     }
 
-    public ProductData displayProductById(int id) {
+    public ProductData displayProductById(Integer id) {
         return productDataRepository.findById(id).orElseThrow(()-> new IllegalStateException("Product doesn't exist!!"));
     }
 
-    public void deleteProduct(int id) {
+    public void deleteProduct(Integer id) {
         productDataRepository.deleteById(id);
     }
 
 
-    public List<ProductData> getProductByCusotmer(int custId) {
+    public List<ProductData> getProductByCustomer(int custId) {
         List<ProductData> products = productDataRepository.findAll();
         List<ProductData> customerProducts = new ArrayList<>();
 
