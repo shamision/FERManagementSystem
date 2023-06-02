@@ -29,29 +29,34 @@ public class MaintenanceController {
     }
 
     @GetMapping(path = "/display/{id}")
-    public Maintenance listMaintenanceById(@PathVariable Integer id) {
+    public Maintenance listMaintenanceById(@PathVariable int id) {
         return maintenanceService.listMaintenanceById(id);
     }
 
     @PutMapping(path = "/update/{id}")
-    public Maintenance updateMaintenance(@PathVariable Integer id,@RequestBody Maintenance maintenance) {
+    public Maintenance updateMaintenance(@PathVariable int id,@RequestBody Maintenance maintenance) {
         maintenance.setId(id);
         return maintenanceService.addMaintenance(maintenance);
     }
 
     @DeleteMapping(path = "/delete/{id}")
-    public void deleteMaintenance(@PathVariable Integer id) {
+    public void deleteMaintenance(@PathVariable int id) {
         maintenanceService.deleteMaintenance(id);
     }
 
     @GetMapping(path = "/EquipmentMaintenance/{id}")
-    public List<Maintenance> ListMaintenanceByProduct(@PathVariable Integer id) {
+    public List<Maintenance> ListMaintenanceByProduct(@PathVariable int id) {
         return maintenanceService.listMaintenanceByEquipment(id);
     }
 
     @GetMapping(path = "/technicianMaintenance/{id}")
     public List<Maintenance> ListMaintenanceByTechnician(@PathVariable Integer id) {
         return maintenanceService.listMaintenanceByTechnician(id);
+    }
+
+    @GetMapping(path = "/customerMaintenance/{id}")
+    public List<Maintenance> generateCustomerReport(@PathVariable Integer id) {
+        return maintenanceService.generateCustomerReport(id);
     }
 
 }

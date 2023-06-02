@@ -17,8 +17,8 @@ public class EquipmentController {
     private final EquipmentService productDataService;
 
     @PostMapping(path = "/register")
-    public Equipment registerNewProductData(@RequestBody Equipment productData){
-        return productDataService.addEquipment(productData);
+    public Equipment registerNewProductData(@RequestBody Equipment equipment){
+        return productDataService.addEquipment(equipment);
     }
 
     @GetMapping
@@ -27,12 +27,12 @@ public class EquipmentController {
     }
 
     @GetMapping(path = "/display/{id}")
-    public Equipment displayProductById(@PathVariable Integer id) {
+    public Equipment displayProductById(@PathVariable int id) {
         return productDataService.displayEquipmentById(id);
     }
 
     @PutMapping(path = "/update/{id}")
-    public Equipment updateProduct(@PathVariable Integer id, @RequestBody Equipment productData) {
+    public Equipment updateProduct(@PathVariable int id, @RequestBody Equipment productData) {
 //        productData.setId(id);
         return productDataService.addEquipment(productData);
     }

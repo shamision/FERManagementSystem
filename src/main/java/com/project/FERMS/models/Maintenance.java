@@ -18,11 +18,11 @@ public class Maintenance {
     @GeneratedValue
     private int id;
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Equipment product;
+    @JoinColumn(name = "equipment_id", nullable = false)
+    private Equipment equipment;
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private Employee technician;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
     @CreationTimestamp
     private LocalDate dateCreated;
     private int cost;

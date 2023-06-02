@@ -22,7 +22,7 @@ public class Employee implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String name;
     private String phone;
     private String email;
