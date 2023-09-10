@@ -72,7 +72,7 @@ public class MaintenanceService {
         List<Report> list = new ArrayList<>();
         String customerName = "";
         try {
-            String filePath = "E:\\SION\\Final year project\\FERMS\\src\\main\\resources\\Invoice.jrxml";
+            String filePath = "D:\\Final Year Project\\Final year project\\FERMS\\src\\main\\resources\\Invoice.jrxml";
             for (Maintenance maintenance : maintenances) {
 
                 LocalDate maintenanceDate = maintenance.getDateCreated();
@@ -109,7 +109,7 @@ public class MaintenanceService {
 
             JasperPrint print = JasperFillManager.fillReport(report1, parameters, dataSource);
 
-            JasperExportManager.exportReportToPdfFile(print,"E:\\SION\\Final year project\\reports\\"+customerName+" maintenance report.pdf");
+            JasperExportManager.exportReportToPdfFile(print,"D:\\Final Year Project\\Report\\"+customerName+" maintenance report.pdf");
 
             System.out.println("Report created!!");
 

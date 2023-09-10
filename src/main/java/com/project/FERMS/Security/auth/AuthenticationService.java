@@ -10,6 +10,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -33,6 +36,7 @@ public class AuthenticationService {
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
+                .employee(user)
                 .build();
     }
 
@@ -43,6 +47,19 @@ public class AuthenticationService {
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
+                .employee(user)
                 .build();
+    }
+
+    public List<Employee> listAllEmployees() {
+        return repository.findAll();
+    }
+
+    public Employee listEmployeeById(int id) {
+        return repository.findById(id).orElseThrow(() -> new IllegalStateException("The employee doesn't exist!!"));
+    }
+
+    public void deleteEmployee(int id) {
+        repository.deleteById(id);
     }
 }

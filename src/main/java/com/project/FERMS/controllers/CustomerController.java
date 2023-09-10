@@ -19,16 +19,14 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping(path = "/register")
-//    @PreAuthorize("hasRole(T(com.project.FERMS.Security.user.Role).MarketingManager.name())")
-//    @PreAuthorize(("hasRole('Technician')"))
     public void registerNewCustomer (@RequestBody Customer customer) {
-
         customerService.addNewCustomer(customer);
     }
 
     @GetMapping
-    public List<Customer> displayCustomers() {
-        return customerService.displayCustomers();
+    public ResponseEntity<List<Customer>> displayCustomers() {
+        List<Customer> customers = customerService.displayCustomers();
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping(path = "/{id}")

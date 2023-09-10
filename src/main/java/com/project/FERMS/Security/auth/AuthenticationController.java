@@ -1,11 +1,11 @@
 package com.project.FERMS.Security.auth;
 
+import com.project.FERMS.Security.user.Employee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/auth")
@@ -24,4 +24,20 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
+
+    @GetMapping("/employees")
+    public List<Employee> listEmployee() {
+        return service.listAllEmployees();
+    }
+
+    @GetMapping("/employee/{id}")
+    public Employee listEmployeeById(@PathVariable int id) {
+        return service.listEmployeeById(id);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteEmployee(@PathVariable int id) {
+        service.deleteEmployee(id);
+    }
+    
 }

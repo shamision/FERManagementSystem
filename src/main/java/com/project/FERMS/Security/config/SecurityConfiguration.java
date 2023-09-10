@@ -34,9 +34,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("api/v1/auth/**").permitAll()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
-                .requestMatchers("api/customer/**").hasAuthority("Technician")
-                .requestMatchers("api/equipment/**").hasAuthority("Technician")
-                .requestMatchers("api/maintenance/**").hasAuthority("Technician")
+                .requestMatchers("api/customer/**").permitAll()
+                .requestMatchers("api/equipment/**").permitAll()
+                .requestMatchers("api/maintenance/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -48,4 +48,6 @@ public class SecurityConfiguration {
 
         return http.build();
     }
+
+
 }

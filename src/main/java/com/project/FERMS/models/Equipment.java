@@ -19,7 +19,6 @@ public class Equipment {
     private int id;
     private String productName;
     private int qty;
-    private int price;
     @CreationTimestamp
     private LocalDate dateCreated;
     @ManyToOne

@@ -3,6 +3,7 @@ package com.project.FERMS.services;
 import com.project.FERMS.models.Customer;
 import com.project.FERMS.models.Equipment;
 import com.project.FERMS.repositories.EquipmentRepository;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
@@ -16,7 +17,8 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EquipmentService {
+public class
+EquipmentService {
     @Autowired
     private final EquipmentRepository equipmentRepository;
 
@@ -53,7 +55,7 @@ public class EquipmentService {
         }
         return customerProducts;
     }
-
+@PostConstruct
     public List<Equipment> getEquipmentAboutToExpire() {
         List<Equipment> equipments = equipmentRepository.findAll();
         List<Equipment> filteredProducts = new ArrayList<>();
@@ -61,8 +63,8 @@ public class EquipmentService {
         LocalDate currentDate = LocalDate.now();
 
         for (Equipment equipment : equipments) {
-            long minutesDifference = ChronoUnit.DAYS.between(equipment.getDateCreated(), currentDate);
-            if (minutesDifference == 0) {
+            long daysDifference = ChronoUnit.DAYS.between(equipment.getDateCreated(), currentDate);
+            if (daysDifference == 0) {
                 filteredProducts.add(equipment);
 
                 Customer customer = equipment.getCustomer();
@@ -72,7 +74,7 @@ public class EquipmentService {
                 simpleMailMessage.setFrom("shami0sion@gmail.com");
                 simpleMailMessage.setTo(email);
                 simpleMailMessage.setSubject("Fire Extinguisher Expired");
-                simpleMailMessage.setText("The fire extinguisher named: "+name+" is expired. It needs to be renewed");
+                simpleMailMessage.setText("The fire extinguisher named: "+name+" is will expire in 3 days. It needs to be renewed");
 
                 this.mailSender.send(simpleMailMessage);
             }
